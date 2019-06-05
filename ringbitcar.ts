@@ -52,8 +52,8 @@ namespace RingbitCar {
 
     /**
     * TODO: set wheel offset
-    * @param left describe parameter here, eg: left_wheel_offset
-    * @param right describe parameter here, eg: right_wheel_offset
+    * @param left_offset describe parameter here, eg: left_wheel_offset
+    * @param right_offset describe parameter here, eg: right_wheel_offset
     */
     //% weight=10
     //% blockId=ringbitcar_offset block="set left wheel offset %left_offset|right wheel offset %right_offset"
