@@ -56,7 +56,7 @@ namespace RingbitCar {
     * @param right describe parameter here, eg: right_wheel_offset
     */
     //% weight=10
-    //% blockId=ringbitcar_init block="set left wheel offset %left_offset|right wheel offset %right_offset"
+    //% blockId=ringbitcar_offset block="set left wheel offset %left_offset|right wheel offset %right_offset"
     //% left_offset.min=-12 left_offset.max=12
     //% right_offset.min=-12 n.right_offset=12
     export function set_offset(left_offset: number, right_offset: number): void {
