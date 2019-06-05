@@ -30,7 +30,8 @@ namespace RingbitCar {
         //% block="inch" enumval=2
         Distance_Unit_inch
     }
-
+    let left_wheel_offset = 0
+    let right_wheel_offset = 0
     let pin_left_wheel = AnalogPin.P1
     let pin_right_wheel = AnalogPin.P2
 
@@ -49,6 +50,21 @@ namespace RingbitCar {
 
     }
 
+    /**
+    * TODO: set wheel offset
+    * @param left describe parameter here, eg: left_wheel_offset
+    * @param right describe parameter here, eg: right_wheel_offset
+    */
+    //% weight=10
+    //% blockId=ringbitcar_init block="set left wheel offset %left_offset|right wheel offset %right_offset"
+    //% left_offset.min=-12 left_offset.max=12
+    //% right_offset.min=-12 n.right_offset=12
+    export function set_offset(left_offset: number, right_offset: number): void {
+        // Add code here
+        left_wheel_offset = left_offset * 8
+        right_wheel_offset = right_offset * 8
+
+    }
 
 
     /**
@@ -59,8 +75,8 @@ namespace RingbitCar {
     export function forward(): void {
         // Add code here
 
-        pins.servoSetPulse(pin_left_wheel, 2400)
-        pins.servoSetPulse(pin_right_wheel, 600)
+        pins.servoSetPulse(pin_left_wheel, 2300 + left_wheel_offset)
+        pins.servoSetPulse(pin_right_wheel, 700 - right_wheel_offset)
 
     }
 
@@ -74,8 +90,8 @@ namespace RingbitCar {
     export function back(): void {
         // Add code here
 
-        pins.servoSetPulse(pin_left_wheel, 600)
-        pins.servoSetPulse(pin_right_wheel, 2400)
+        pins.servoSetPulse(pin_left_wheel, 700 - left_wheel_offset)
+        pins.servoSetPulse(pin_right_wheel, 2300 + right_wheel_offset)
 
     }
 
@@ -89,8 +105,8 @@ namespace RingbitCar {
     export function turnleft(): void {
         // Add code here
 
-        pins.servoSetPulse(pin_left_wheel, 600)
-        pins.servoSetPulse(pin_right_wheel, 600)
+        pins.servoSetPulse(pin_left_wheel, 700 - left_wheel_offset)
+        pins.servoSetPulse(pin_right_wheel, 700 - right_wheel_offset)
 
     }
 
@@ -103,8 +119,8 @@ namespace RingbitCar {
     export function turnright(): void {
         // Add code here
 
-        pins.servoSetPulse(pin_left_wheel, 2400)
-        pins.servoSetPulse(pin_right_wheel, 2400)
+        pins.servoSetPulse(pin_left_wheel, 2300 + left_wheel_offset)
+        pins.servoSetPulse(pin_right_wheel, 2300 + right_wheel_offset)
 
     }
 
@@ -139,16 +155,16 @@ namespace RingbitCar {
         // Add code here
 
         if (m > 0) {
-            pins.servoSetPulse(pin_left_wheel, 1600 + m * 8)
+            pins.servoSetPulse(pin_left_wheel, 1600 + m * 8 + left_wheel_offset)
         } else if (m < 0) {
-            pins.servoSetPulse(pin_left_wheel, 1400 + m * 8)
+            pins.servoSetPulse(pin_left_wheel, 1400 + m * 8 - left_wheel_offset)
         } else pins.servoSetPulse(pin_left_wheel, 1500)
 
 
         if (n > 0) {
-            pins.servoSetPulse(pin_right_wheel, 1400 - n * 8)
+            pins.servoSetPulse(pin_right_wheel, 1400 - n * 8 + right_wheel_offset)
         } else if (n < 0) {
-            pins.servoSetPulse(pin_right_wheel, 1600 - n * 8)
+            pins.servoSetPulse(pin_right_wheel, 1600 - n * 8 + right_wheel_offset)
         } else pins.servoSetPulse(pin_right_wheel, 1500)
 
     }
