@@ -90,7 +90,7 @@ namespace RingbitCar {
     export function back(): void {
         // Add code here
 
-        pins.servoSetPulse(pin_left_wheel, 700 - left_wheel_offset)
+        pins.servoSetPulse(pin_left_wheel, 700 + left_wheel_offset)
         pins.servoSetPulse(pin_right_wheel, 2300 + right_wheel_offset)
 
     }
